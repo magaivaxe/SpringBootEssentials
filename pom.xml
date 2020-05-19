@@ -1,0 +1,24 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>ca.mpsg</groupId>
+  <artifactId>spring-boot-essentials-suite</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  
+  <name>spring-boot-essentials-suite</name>
+  <description>spring-boot-essentials-suite</description>
+  
+  <modules>
+    <module>actuator-demo</module>
+    <module>essentials-boot-app</module>
+    <module>logging-spring-boot-autoconfigure</module>
+    <module>logging-spring-boot-starter</module>
+    <module>room-cleaner-consumer</module>
+    <module>room-clr-app</module>
+    <module>room-web-app</module>
+    <module>service-logging</module>
+  </modules>
+  
+</project>

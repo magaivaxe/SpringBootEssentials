@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>com.mpsg.boot.starter</groupId>
+  <artifactId>logging-spring-boot-starter</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <name>logging-spring-boot-starter</name>
+  
+  <properties>
+    <spring.boot.version>2.2.6.RELEASE</spring.boot.version>
+    <maven.compiler.target>11</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
+  </properties>
+  
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring.boot.version}</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  
+  <dependencies>
+    <dependency>
+      <groupId>com.mpsg.boot.logging</groupId>
+      <artifactId>logging-spring-boot-autoconfigure</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.mpsg.aop</groupId>
+	    <artifactId>service-logging</artifactId>
+	    <version>1.0.0-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+  
+</project>
