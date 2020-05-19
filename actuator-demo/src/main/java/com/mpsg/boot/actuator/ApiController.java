@@ -1,32 +1,40 @@
 package com.mpsg.boot.actuator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.List;
+import io.micrometer.core.annotation.Timed;
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.MeterRegistry;
 
 @RestController
 @RequestMapping("api")
 public class ApiController {
 
-    private final PresidentRepository presidentRepository;
+  private final PresidentRepository presidentRepository;
+  private final Counter greetingCounter;
 
-    public ApiController(PresidentRepository presidentRepository){
-        this.presidentRepository = presidentRepository;
-    }
+  public ApiController(PresidentRepository presidentRepository, MeterRegistry registry){
+    this.presidentRepository = presidentRepository;
+    greetingCounter = Counter.builder("api.greeting").register(registry);
+  }
 
-    @GetMapping("greeting")
-    public String getGreeting(){
-        return "Hello LinkedIn Learning Student";
-    }
+  @GetMapping("greeting")
+  public String getGreeting(){
+    greetingCounter.increment();
+    return "Hello LinkedIn Learning Student";
+  }
 
-    @GetMapping("presidents")
-    public List<President> getAllUSPresidents(){
-        List<President> presidents = new ArrayList<>();
-        this.presidentRepository.findAll().forEach(presidents::add);
-        return presidents;
-    }
+  @GetMapping("presidents")
+  @Timed(value = "api.getAllPresidents")
+  public List<President> getAllUSPresidents(){
+    List<President> presidents = new ArrayList<>();
+    this.presidentRepository.findAll().forEach(presidents::add);
+    return presidents;
+  }
 
 }
